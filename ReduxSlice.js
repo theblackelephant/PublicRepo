@@ -1,33 +1,21 @@
+// src/features/status/statusSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const fetchStatus = createAsyncThunk('status/fetchStatus', async () => {
-  const response = await axios.get('http://localhost:5000/status');
-  return response.data.status;
+export const fetchStatus = createAsyncThunk('status/fetchStatus', async (host) => {
+    const response = await axios.get(`/api/status/${host}`);
+    return response.data;
 });
 
 const statusSlice = createSlice({
-  name: 'status',
-  initialState: {
-    value: 'unknown',
-    loading: false,
-    error: null,
-  },
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchStatus.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(fetchStatus.fulfilled, (state, action) => {
-        state.value = action.payload;
-        state.loading = false;
-      })
-      .addCase(fetchStatus.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message;
-      });
-  },
+    name: 'status',
+    initialState: {},
+    reducers: {},
+    extraReducers: (builder) => {
+        builder.addCase(fetchStatus.fulfilled, (state, action) => {
+            state[action.meta.arg] = action.payload.status;
+        });
+    },
 });
 
 export default statusSlice.reducer;
