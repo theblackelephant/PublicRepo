@@ -1,31 +1,36 @@
 const express = require('express');
 const axios = require('axios');
-const cors = require('cors');
-
 const app = express();
-const PORT = 5000;
+const port = 5000;
 
-app.use(cors());
+// Replace with your Prometheus URL
+const prometheusUrl = 'http://your-prometheus-server/api/v1/query';
 
-app.get('/api/status', async (req, res) => {
-    try {
-        const response = await axios.get('http://your-prometheus-server/api/v1/query', {
-            params: {
-                query: 'your_prometheus_query'
-            }
-        });
+// Example hosts
+const hosts = ['host1', 'host2', 'host3'];
 
-        const data = response.data.data.result.map(host => ({
-            host: host.metric.instance,
-            status: host.value[1] // Assuming the status is part of the query response
-        }));
-
-        res.json(data);
-    } catch (error) {
-        res.status(500).send(error.toString());
+// Function to query Prometheus
+const getHostStatus = async (host) => {
+  const query = `up{instance="${host}"}`;
+  try {
+    const response = await axios.get(prometheusUrl, { params: { query } });
+    if (response.data.data.result.length > 0) {
+      return 'green'; // Host is up
+    } else {
+      return 'red'; // Host is down
     }
+  } catch (error) {
+    console.error(`Error querying Prometheus for ${host}:`, error);
+    return 'grey'; // Error in querying
+  }
+};
+
+app.get('/api/hosts', async (req, res) => {
+  const statuses = await Promise.all(hosts.map(getHostStatus));
+  const result = hosts.map((host, index) => ({ host, status: statuses[index] }));
+  res.json(result);
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
 });
