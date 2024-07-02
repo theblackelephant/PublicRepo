@@ -1,0 +1,28 @@
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 16px;
+  margin: 8px;
+  width: 150px;
+  text-align: center;
+}
+
+.card.green {
+  background-color: green;
+  color: white;
+}
+
+.card.red {
+  background-color: red;
+  color: white;
+}
+
+.card.grey {
+  background-color: grey;
+  color: white;
+}
