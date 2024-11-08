@@ -147,3 +147,96 @@
 	•	Conduct a session on using and monitoring Grafana Tempo.
 	•	Provide access and support contacts for operations.
 	•	Assignee: DevOps Engineer
+9. Resiliency Testing
+
+	•	Task: Conduct resiliency tests for Grafana Tempo.
+	•	Subtasks:
+	•	Simulate high traffic spikes to observe Tempo’s handling capacity.
+	•	Introduce network latency and packet loss to test Tempo’s fault tolerance.
+	•	Verify error rates, trace loss, and application stability during these tests.
+	•	Assignee: QA Engineer / DevOps Engineer
+	•	Task: Simulate service disruptions and test failover mechanisms.
+	•	Subtasks:
+	•	Simulate unexpected node or pod failures in the Kubernetes cluster.
+	•	Ensure Grafana Tempo’s services can restart and resume operations without data loss.
+	•	Validate the persistence layer to confirm data recovery after disruptions.
+	•	Assignee: QA Engineer / DevOps Engineer
+	•	Task: Verify Tempo performance under constrained resource conditions.
+	•	Subtasks:
+	•	Reduce CPU and memory allocations temporarily to assess Tempo’s response.
+	•	Test for data ingestion, storage, and retrieval consistency.
+	•	Identify and document critical thresholds for Tempo performance.
+	•	Assignee: QA Engineer / Developer
+
+10. OTEL Collector Installation and Integration Testing
+
+	•	Task: Install OpenTelemetry (OTEL) Collector in Kubernetes cluster.
+	•	Subtasks:
+	•	Deploy OTEL Collector in each environment (dev, QA, and prod).
+	•	Configure OTEL Collector to route traces to Tempo.
+	•	Assignee: DevOps Engineer
+	•	Task: Set up OTEL Collector configurations for data pipelines.
+	•	Subtasks:
+	•	Define pipelines for traces, metrics, and logs, ensuring proper formatting.
+	•	Configure sampling policies, if necessary, for high-volume environments.
+	•	Document the OTEL Collector setup for future reference.
+	•	Assignee: Developer / DevOps Engineer
+	•	Task: Integrate OTEL Collector with sample applications.
+	•	Subtasks:
+	•	Deploy sample applications instrumented with OTEL SDKs (e.g., for Node.js, Python).
+	•	Send traces from sample apps to OTEL Collector and verify ingestion by Tempo.
+	•	Validate data propagation across all systems (OTEL Collector → Tempo → Grafana).
+	•	Assignee: Developer / QA Engineer
+	•	Task: Verify trace and metric accuracy from sample applications.
+	•	Subtasks:
+	•	Test distributed tracing by triggering transactions across multiple services.
+	•	Confirm trace and span information in Grafana Tempo aligns with sample app behavior.
+	•	Verify metric data (such as latency and error rates) is accurate in Grafana dashboards.
+	•	Assignee: QA Engineer
+
+11. Optimization Tasks
+
+	•	Task: Review and optimize Tempo’s configuration for performance.
+	•	Subtasks:
+	•	Analyze Tempo’s memory and CPU usage under load.
+	•	Fine-tune settings for trace retention, sampling rate, and buffer sizes.
+	•	Test adjustments to confirm improvement in trace processing speed and reliability.
+	•	Assignee: Developer / DevOps Engineer
+	•	Task: Enable and validate caching mechanisms for faster trace retrieval.
+	•	Subtasks:
+	•	Configure any caching options available in Tempo’s storage backend.
+	•	Test trace retrieval times before and after caching.
+	•	Document the caching setup and evaluate the impact on storage performance.
+	•	Assignee: Developer / DevOps Engineer
+	•	Task: Implement trace sampling policies to manage high-volume data efficiently.
+	•	Subtasks:
+	•	Define sampling strategies in OTEL Collector and/or Tempo.
+	•	Adjust sampling configurations to balance data granularity with performance.
+	•	Measure ingestion and retrieval performance with sampling enabled.
+	•	Assignee: Developer / QA Engineer
+	•	Task: Optimize OTEL Collector configurations for minimal latency.
+	•	Subtasks:
+	•	Adjust buffer and batch sizes in OTEL Collector to minimize latency.
+	•	Test trace propagation time from application to Tempo.
+	•	Ensure configuration does not impact data integrity or overload services.
+	•	Assignee: Developer / DevOps Engineer
+	•	Task: Benchmark Tempo performance with and without optimization.
+	•	Subtasks:
+	•	Run end-to-end performance benchmarks across different configurations.
+	•	Document results and identify areas for additional tuning.
+	•	Establish baseline performance metrics for future reference.
+	•	Assignee: QA Engineer / DevOps Engineer
+
+12. Monitoring and Alerts Setup
+
+	•	Task: Create Grafana dashboards for monitoring OTEL Collector and Tempo performance.
+	•	Subtasks:
+	•	Configure dashboards with metrics for ingestion rate, error rate, and latency.
+	•	Set up visualizations for memory and CPU usage of Tempo and OTEL Collector.
+	•	Assignee: DevOps Engineer
+	•	Task: Set up alerts for Tempo and OTEL Collector health and performance metrics.
+	•	Subtasks:
+	•	Define threshold alerts for ingestion latency, resource usage, and error rates.
+	•	Test alerting notifications to ensure timely responses to incidents.
+	•	Document alert configurations and response procedures.
+	•	Assignee: DevOps Engineer / Security Engineer
