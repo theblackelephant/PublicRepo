@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Load environment variables from .env file
+if [ -f .env ]; then
+  export $(grep -v '^#' .env | xargs)
+else
+  echo "Error: .env file not found!"
+  exit 1
+fi
+
+echo "Loading required modules..."
+module load kubectl
+module load tools
+
+# Authenticate using kinit
+echo "Please enter your password for kinit authentication:"
+kinit your-username@DOMAIN.COM
+
+# Cluster selection
+echo "Select a cluster to log in:"
+echo "1) Tenant Cluster"
+echo "2) Dev Cluster"
+echo "3) QA Cluster"
+echo "4) Exit"
+
+read -p "Enter choice [1-4]: " choice
+
+case $choice in
+  1) CLUSTER_NAME=$TENANT_CLUSTER ;;
+  2) CLUSTER_NAME=$DEV_CLUSTER ;;
+  3) CLUSTER_NAME=$QA_CLUSTER ;;
+  4) echo "Exiting..."; exit 0 ;;
+  *) echo "Invalid choice! Exiting..."; exit 1 ;;
+esac
+
+# Login to Unimatrix cluster
+echo "Logging into Unimatrix cluster: $CLUSTER_NAME..."
+unimatrix login "$CLUSTER_NAME"
+
+# Run additional commands after login
+echo "Running additional commands..."
+kubectl get pods
+kubectl get nodes
