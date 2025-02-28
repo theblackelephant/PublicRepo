@@ -1,0 +1,257 @@
+# TYPE process_runtime_dotnet_gc_collections_count_total counter
+# HELP process_runtime_dotnet_gc_collections_count_total Number of garbage collections that have occurred since process start.
+process_runtime_dotnet_gc_collections_count_total{generation="gen2"} 3 1740754545516
+process_runtime_dotnet_gc_collections_count_total{generation="gen1"} 11 1740754545516
+process_runtime_dotnet_gc_collections_count_total{generation="gen0"} 107 1740754545516
+
+# TYPE process_runtime_dotnet_gc_objects_size_bytes gauge
+# UNIT process_runtime_dotnet_gc_objects_size_bytes bytes
+# HELP process_runtime_dotnet_gc_objects_size_bytes Count of bytes currently in use by objects in the GC heap that haven't been collected yet. Fragmentation and other GC committed memory pools are excluded.
+process_runtime_dotnet_gc_objects_size_bytes 8521976 1740754545516
+
+# TYPE process_runtime_dotnet_gc_allocations_size_bytes_total counter
+# UNIT process_runtime_dotnet_gc_allocations_size_bytes_total bytes
+# HELP process_runtime_dotnet_gc_allocations_size_bytes_total Count of bytes allocated on the managed GC heap since the process start. .NET objects are allocated from this heap. Object allocations from unmanaged languages such as C/C++ do not use this heap.
+process_runtime_dotnet_gc_allocations_size_bytes_total 501652288 1740754545516
+
+# TYPE process_runtime_dotnet_gc_committed_memory_size_bytes gauge
+# UNIT process_runtime_dotnet_gc_committed_memory_size_bytes bytes
+# HELP process_runtime_dotnet_gc_committed_memory_size_bytes The amount of committed virtual memory for the managed GC heap, as observed during the latest garbage collection. Committed virtual memory may be larger than the heap size because it includes both memory for storing existing objects (the heap size) and some extra memory that is ready to handle newly allocated objects in the future. The value will be unavailable until at least one garbage collection has occurred.
+process_runtime_dotnet_gc_committed_memory_size_bytes 12042240 1740754545516
+
+# TYPE process_runtime_dotnet_gc_heap_size_bytes gauge
+# UNIT process_runtime_dotnet_gc_heap_size_bytes bytes
+# HELP process_runtime_dotnet_gc_heap_size_bytes The heap size (including fragmentation), as observed during the latest garbage collection. The value will be unavailable until at least one garbage collection has occurred.
+process_runtime_dotnet_gc_heap_size_bytes{generation="gen0"} 2442376 1740754545516
+process_runtime_dotnet_gc_heap_size_bytes{generation="gen1"} 61792 1740754545516
+process_runtime_dotnet_gc_heap_size_bytes{generation="gen2"} 1657248 1740754545516
+process_runtime_dotnet_gc_heap_size_bytes{generation="loh"} 4553624 1740754545516
+process_runtime_dotnet_gc_heap_size_bytes{generation="poh"} 74720 1740754545516
+
+# TYPE process_runtime_dotnet_gc_heap_fragmentation_size_bytes gauge
+# UNIT process_runtime_dotnet_gc_heap_fragmentation_size_bytes bytes
+# HELP process_runtime_dotnet_gc_heap_fragmentation_size_bytes The heap fragmentation, as observed during the latest garbage collection. The value will be unavailable until at least one garbage collection has occurred.
+process_runtime_dotnet_gc_heap_fragmentation_size_bytes{generation="gen0"} 2434056 1740754545516
+process_runtime_dotnet_gc_heap_fragmentation_size_bytes{generation="gen1"} 864 1740754545516
+process_runtime_dotnet_gc_heap_fragmentation_size_bytes{generation="gen2"} 9392 1740754545516
+process_runtime_dotnet_gc_heap_fragmentation_size_bytes{generation="loh"} 1312 1740754545516
+process_runtime_dotnet_gc_heap_fragmentation_size_bytes{generation="poh"} 0 1740754545516
+
+# TYPE process_runtime_dotnet_gc_duration_nanoseconds_total counter
+# UNIT process_runtime_dotnet_gc_duration_nanoseconds_total nanoseconds
+# HELP process_runtime_dotnet_gc_duration_nanoseconds_total The total amount of time paused in GC since the process start.
+process_runtime_dotnet_gc_duration_nanoseconds_total 4611904000 1740754545516
+
+# TYPE process_runtime_dotnet_jit_il_compiled_size_bytes_total counter
+# UNIT process_runtime_dotnet_jit_il_compiled_size_bytes_total bytes
+# HELP process_runtime_dotnet_jit_il_compiled_size_bytes_total Count of bytes of intermediate language that have been compiled since the process start.
+process_runtime_dotnet_jit_il_compiled_size_bytes_total 1610344 1740754545516
+
+# TYPE process_runtime_dotnet_jit_methods_compiled_count_total counter
+# HELP process_runtime_dotnet_jit_methods_compiled_count_total The number of times the JIT compiler compiled a method since the process start. The JIT compiler may be invoked multiple times for the same method to compile with different generic parameters, or because tiered compilation requested different optimization settings.
+process_runtime_dotnet_jit_methods_compiled_count_total 22943 1740754545516
+
+# TYPE process_runtime_dotnet_jit_compilation_time_nanoseconds_total counter
+# UNIT process_runtime_dotnet_jit_compilation_time_nanoseconds_total nanoseconds
+# HELP process_runtime_dotnet_jit_compilation_time_nanoseconds_total The amount of time the JIT compiler has spent compiling methods since the process start.
+process_runtime_dotnet_jit_compilation_time_nanoseconds_total 42024920700 1740754545516
+
+# TYPE process_runtime_dotnet_monitor_lock_contention_count_total counter
+# HELP process_runtime_dotnet_monitor_lock_contention_count_total The number of times there was contention when trying to acquire a monitor lock since the process start. Monitor locks are commonly acquired by using the lock keyword in C#, or by calling Monitor.Enter() and Monitor.TryEnter().
+process_runtime_dotnet_monitor_lock_contention_count_total 102 1740754545516
+
+# TYPE process_runtime_dotnet_thread_pool_threads_count gauge
+# HELP process_runtime_dotnet_thread_pool_threads_count The number of thread pool threads that currently exist.
+process_runtime_dotnet_thread_pool_threads_count 3 1740754545516
+
+# TYPE process_runtime_dotnet_thread_pool_completed_items_count_total counter
+# HELP process_runtime_dotnet_thread_pool_completed_items_count_total The number of work items that have been processed by the thread pool since the process start.
+process_runtime_dotnet_thread_pool_completed_items_count_total 42415 1740754545516
+
+# TYPE process_runtime_dotnet_thread_pool_queue_length gauge
+# HELP process_runtime_dotnet_thread_pool_queue_length The number of work items that are currently queued to be processed by the thread pool.
+process_runtime_dotnet_thread_pool_queue_length 0 1740754545516
+
+# TYPE process_runtime_dotnet_timer_count gauge
+# HELP process_runtime_dotnet_timer_count The number of timer instances that are currently active. Timers can be created by many sources such as System.Threading.Timer, Task.Delay, or the timeout in a CancellationSource. An active timer is registered to tick at some point in the future and has not yet been canceled.
+process_runtime_dotnet_timer_count 2 1740754545516
+
+# TYPE process_runtime_dotnet_assemblies_count gauge
+# HELP process_runtime_dotnet_assemblies_count The number of .NET assemblies that are currently loaded.
+process_runtime_dotnet_assemblies_count 131 1740754545516
+
+# TYPE process_runtime_dotnet_exceptions_count_total counter
+# HELP process_runtime_dotnet_exceptions_count_total Count of exceptions that have been thrown in managed code, since the observation started. The value will be unavailable until an exception has been thrown after OpenTelemetry.Instrumentation.Runtime initialization.
+process_runtime_dotnet_exceptions_count_total 65696 1740754545516
+
+# TYPE process_memory_usage_bytes gauge
+# UNIT process_memory_usage_bytes bytes
+# HELP process_memory_usage_bytes The amount of physical memory allocated for this process.
+process_memory_usage_bytes 197017600 1740754545516
+
+# TYPE process_memory_virtual_bytes gauge
+# UNIT process_memory_virtual_bytes bytes
+# HELP process_memory_virtual_bytes The amount of committed virtual memory for this process.
+process_memory_virtual_bytes 7210037248 1740754545516
+
+# TYPE process_cpu_time_seconds_total counter
+# UNIT process_cpu_time_seconds_total seconds
+# HELP process_cpu_time_seconds_total Total CPU seconds broken down by different states.
+process_cpu_time_seconds_total{state="user"} 220.562911 1740754545519
+process_cpu_time_seconds_total{state="system"} 27.123173 1740754545519
+
+# TYPE process_cpu_count gauge
+# HELP process_cpu_count The number of processors (CPU cores) available to the current process.
+process_cpu_count 1 1740754545519
+
+# TYPE process_threads gauge
+# HELP process_threads Process threads count.
+process_threads 22 1740754545519
+
+# TYPE dns_lookup_duration_seconds histogram
+# UNIT dns_lookup_duration_seconds seconds
+# HELP dns_lookup_duration_seconds Measures the time taken to perform a DNS lookup.
+dns_lookup_duration_seconds_bucket{dns_question_name="otel-collector",error_type="host_not_found",le="0"} 0 1740754545519
+dns_lookup_duration_seconds_bucket{dns_question_name="otel-collector",error_type="host_not_found",le="5"} 3456 1740754545519
+dns_lookup_duration_seconds_bucket{dns_question_name="otel-collector",error_type="host_not_found",le="10"} 3457 1740754545519
+dns_lookup_duration_seconds_bucket{dns_question_name="otel-collector",error_type="host_not_found",le="25"} 3457 1740754545519
+dns_lookup_duration_seconds_bucket{dns_question_name="otel-collector",error_type="host_not_found",le="50"} 3457 1740754545519
+dns_lookup_duration_seconds_bucket{dns_question_name="otel-collector",error_type="host_not_found",le="75"} 3457 1740754545519
+dns_lookup_duration_seconds_bucket{dns_question_name="otel-collector",error_type="host_not_found",le="100"} 3457 1740754545519
+dns_lookup_duration_seconds_bucket{dns_question_name="otel-collector",error_type="host_not_found",le="250"} 3457 1740754545519
+dns_lookup_duration_seconds_bucket{dns_question_name="otel-collector",error_type="host_not_found",le="500"} 3457 1740754545519
+dns_lookup_duration_seconds_bucket{dns_question_name="otel-collector",error_type="host_not_found",le="750"} 3457 1740754545519
+dns_lookup_duration_seconds_bucket{dns_question_name="otel-collector",error_type="host_not_found",le="1000"} 3457 1740754545519
+dns_lookup_duration_seconds_bucket{dns_question_name="otel-collector",error_type="host_not_found",le="2500"} 3457 1740754545519
+dns_lookup_duration_seconds_bucket{dns_question_name="otel-collector",error_type="host_not_found",le="5000"} 3457 1740754545519
+dns_lookup_duration_seconds_bucket{dns_question_name="otel-collector",error_type="host_not_found",le="7500"} 3457 1740754545519
+dns_lookup_duration_seconds_bucket{dns_question_name="otel-collector",error_type="host_not_found",le="10000"} 3457 1740754545519
+dns_lookup_duration_seconds_bucket{dns_question_name="otel-collector",error_type="host_not_found",le="+Inf"} 3457 1740754545519
+dns_lookup_duration_seconds_sum{dns_question_name="otel-collector",error_type="host_not_found"} 120.14964300000022 1740754545519
+dns_lookup_duration_seconds_count{dns_question_name="otel-collector",error_type="host_not_found"} 3457 1740754545519
+
+# TYPE kestrel_active_connections gauge
+# HELP kestrel_active_connections Number of connections that are currently active on the server.
+kestrel_active_connections{network_transport="tcp",network_type="ipv6",server_address="::ffff:10.1.0.73",server_port="80"} 0 1740754545519
+
+# TYPE kestrel_connection_duration_seconds histogram
+# UNIT kestrel_connection_duration_seconds seconds
+# HELP kestrel_connection_duration_seconds The duration of connections on the server.
+kestrel_connection_duration_seconds_bucket{network_protocol_name="http",network_protocol_version="1.1",network_transport="tcp",network_type="ipv6",server_address="::ffff:10.1.0.73",server_port="80",le="0"} 0 1740754545519
+kestrel_connection_duration_seconds_bucket{network_protocol_name="http",network_protocol_version="1.1",network_transport="tcp",network_type="ipv6",server_address="::ffff:10.1.0.73",server_port="80",le="0.005"} 1509 1740754545519
+kestrel_connection_duration_seconds_bucket{network_protocol_name="http",network_protocol_version="1.1",network_transport="tcp",network_type="ipv6",server_address="::ffff:10.1.0.73",server_port="80",le="0.01"} 4067 1740754545519
+kestrel_connection_duration_seconds_bucket{network_protocol_name="http",network_protocol_version="1.1",network_transport="tcp",network_type="ipv6",server_address="::ffff:10.1.0.73",server_port="80",le="0.025"} 4839 1740754545519
+kestrel_connection_duration_seconds_bucket{network_protocol_name="http",network_protocol_version="1.1",network_transport="tcp",network_type="ipv6",server_address="::ffff:10.1.0.73",server_port="80",le="0.05"} 4913 1740754545519
+kestrel_connection_duration_seconds_bucket{network_protocol_name="http",network_protocol_version="1.1",network_transport="tcp",network_type="ipv6",server_address="::ffff:10.1.0.73",server_port="80",le="0.075"} 4946 1740754545519
+kestrel_connection_duration_seconds_bucket{network_protocol_name="http",network_protocol_version="1.1",network_transport="tcp",network_type="ipv6",server_address="::ffff:10.1.0.73",server_port="80",le="0.1"} 5191 1740754545519
+kestrel_connection_duration_seconds_bucket{network_protocol_name="http",network_protocol_version="1.1",network_transport="tcp",network_type="ipv6",server_address="::ffff:10.1.0.73",server_port="80",le="0.25"} 5232 1740754545519
+kestrel_connection_duration_seconds_bucket{network_protocol_name="http",network_protocol_version="1.1",network_transport="tcp",network_type="ipv6",server_address="::ffff:10.1.0.73",server_port="80",le="0.5"} 5243 1740754545519
+kestrel_connection_duration_seconds_bucket{network_protocol_name="http",network_protocol_version="1.1",network_transport="tcp",network_type="ipv6",server_address="::ffff:10.1.0.73",server_port="80",le="0.75"} 5250 1740754545519
+kestrel_connection_duration_seconds_bucket{network_protocol_name="http",network_protocol_version="1.1",network_transport="tcp",network_type="ipv6",server_address="::ffff:10.1.0.73",server_port="80",le="1"} 5254 1740754545519
+kestrel_connection_duration_seconds_bucket{network_protocol_name="http",network_protocol_version="1.1",network_transport="tcp",network_type="ipv6",server_address="::ffff:10.1.0.73",server_port="80",le="2.5"} 5257 1740754545519
+kestrel_connection_duration_seconds_bucket{network_protocol_name="http",network_protocol_version="1.1",network_transport="tcp",network_type="ipv6",server_address="::ffff:10.1.0.73",server_port="80",le="5"} 5259 1740754545519
+kestrel_connection_duration_seconds_bucket{network_protocol_name="http",network_protocol_version="1.1",network_transport="tcp",network_type="ipv6",server_address="::ffff:10.1.0.73",server_port="80",le="7.5"} 5259 1740754545519
+kestrel_connection_duration_seconds_bucket{network_protocol_name="http",network_protocol_version="1.1",network_transport="tcp",network_type="ipv6",server_address="::ffff:10.1.0.73",server_port="80",le="10"} 5259 1740754545519
+kestrel_connection_duration_seconds_bucket{network_protocol_name="http",network_protocol_version="1.1",network_transport="tcp",network_type="ipv6",server_address="::ffff:10.1.0.73",server_port="80",le="+Inf"} 5259 1740754545519
+kestrel_connection_duration_seconds_sum{network_protocol_name="http",network_protocol_version="1.1",network_transport="tcp",network_type="ipv6",server_address="::ffff:10.1.0.73",server_port="80"} 93.25408200000051 1740754545519
+kestrel_connection_duration_seconds_count{network_protocol_name="http",network_protocol_version="1.1",network_transport="tcp",network_type="ipv6",server_address="::ffff:10.1.0.73",server_port="80"} 5259 1740754545519
+
+# TYPE kestrel_queued_connections gauge
+# HELP kestrel_queued_connections Number of connections that are currently queued and are waiting to start.
+kestrel_queued_connections{network_transport="tcp",network_type="ipv6",server_address="::ffff:10.1.0.73",server_port="80"} 0 1740754545519
+
+# TYPE http_server_active_requests gauge
+# HELP http_server_active_requests Number of active HTTP server requests.
+http_server_active_requests{http_request_method="GET",url_scheme="http"} 0 1740754545519
+
+# TYPE http_server_request_duration_seconds histogram
+# UNIT http_server_request_duration_seconds seconds
+# HELP http_server_request_duration_seconds Duration of HTTP server requests.
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="499",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="0"} 0 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="499",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="0.005"} 0 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="499",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="0.01"} 0 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="499",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="0.025"} 0 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="499",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="0.05"} 0 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="499",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="0.075"} 0 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="499",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="0.1"} 1 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="499",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="0.25"} 1 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="499",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="0.5"} 1 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="499",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="0.75"} 1 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="499",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="1"} 1 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="499",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="2.5"} 1 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="499",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="5"} 3 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="499",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="7.5"} 3 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="499",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="10"} 3 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="499",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="+Inf"} 3 1740754545520
+http_server_request_duration_seconds_sum{http_request_method="GET",http_response_status_code="499",http_route="/api/health",network_protocol_version="1.1",url_scheme="http"} 6.3965617 1740754545520
+http_server_request_duration_seconds_count{http_request_method="GET",http_response_status_code="499",http_route="/api/health",network_protocol_version="1.1",url_scheme="http"} 3 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="200",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="0"} 0 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="200",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="0.005"} 3681 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="200",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="0.01"} 4709 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="200",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="0.025"} 5022 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="200",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="0.05"} 5037 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="200",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="0.075"} 5094 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="200",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="0.1"} 5225 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="200",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="0.25"} 5242 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="200",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="0.5"} 5245 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="200",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="0.75"} 5245 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="200",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="1"} 5246 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="200",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="2.5"} 5246 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="200",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="5"} 5246 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="200",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="7.5"} 5246 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="200",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="10"} 5246 1740754545520
+http_server_request_duration_seconds_bucket{http_request_method="GET",http_response_status_code="200",http_route="/api/health",network_protocol_version="1.1",url_scheme="http",le="+Inf"} 5246 1740754545520
+http_server_request_duration_seconds_sum{http_request_method="GET",http_response_status_code="200",http_route="/api/health",network_protocol_version="1.1",url_scheme="http"} 42.1927927000001 1740754545520
+http_server_request_duration_seconds_count{http_request_method="GET",http_response_status_code="200",http_route="/api/health",network_protocol_version="1.1",url_scheme="http"} 5246 1740754545520
+
+# TYPE aspnetcore_routing_match_attempts_total counter
+# HELP aspnetcore_routing_match_attempts_total Number of requests that were attempted to be matched to an endpoint.
+aspnetcore_routing_match_attempts_total{aspnetcore_routing_is_fallback="False",aspnetcore_routing_match_status="success",http_route="/api/health"} 5249 1740754545520
+
+# TYPE http_client_active_requests gauge
+# HELP http_client_active_requests Number of outbound HTTP requests that are currently active on the client.
+http_client_active_requests{http_request_method="POST",server_address="otel-collector",server_port="4318",url_scheme="http"} 0 1740754545520
+
+# TYPE http_client_request_duration_seconds histogram
+# UNIT http_client_request_duration_seconds seconds
+# HELP http_client_request_duration_seconds Duration of HTTP client requests.
+http_client_request_duration_seconds_bucket{error_type="name_resolution_error",http_request_method="POST",server_address="otel-collector",server_port="4318",url_scheme="http",le="0"} 0 1740754545520
+http_client_request_duration_seconds_bucket{error_type="name_resolution_error",http_request_method="POST",server_address="otel-collector",server_port="4318",url_scheme="http",le="0.005"} 0 1740754545520
+http_client_request_duration_seconds_bucket{error_type="name_resolution_error",http_request_method="POST",server_address="otel-collector",server_port="4318",url_scheme="http",le="0.01"} 88 1740754545520
+http_client_request_duration_seconds_bucket{error_type="name_resolution_error",http_request_method="POST",server_address="otel-collector",server_port="4318",url_scheme="http",le="0.025"} 1250 1740754545520
+http_client_request_duration_seconds_bucket{error_type="name_resolution_error",http_request_method="POST",server_address="otel-collector",server_port="4318",url_scheme="http",le="0.05"} 2992 1740754545520
+http_client_request_duration_seconds_bucket{error_type="name_resolution_error",http_request_method="POST",server_address="otel-collector",server_port="4318",url_scheme="http",le="0.075"} 3372 1740754545520
+http_client_request_duration_seconds_bucket{error_type="name_resolution_error",http_request_method="POST",server_address="otel-collector",server_port="4318",url_scheme="http",le="0.1"} 3406 1740754545520
+http_client_request_duration_seconds_bucket{error_type="name_resolution_error",http_request_method="POST",server_address="otel-collector",server_port="4318",url_scheme="http",le="0.25"} 3435 1740754545520
+http_client_request_duration_seconds_bucket{error_type="name_resolution_error",http_request_method="POST",server_address="otel-collector",server_port="4318",url_scheme="http",le="0.5"} 3444 1740754545520
+http_client_request_duration_seconds_bucket{error_type="name_resolution_error",http_request_method="POST",server_address="otel-collector",server_port="4318",url_scheme="http",le="0.75"} 3446 1740754545520
+http_client_request_duration_seconds_bucket{error_type="name_resolution_error",http_request_method="POST",server_address="otel-collector",server_port="4318",url_scheme="http",le="1"} 3448 1740754545520
+http_client_request_duration_seconds_bucket{error_type="name_resolution_error",http_request_method="POST",server_address="otel-collector",server_port="4318",url_scheme="http",le="2.5"} 3453 1740754545520
+http_client_request_duration_seconds_bucket{error_type="name_resolution_error",http_request_method="POST",server_address="otel-collector",server_port="4318",url_scheme="http",le="5"} 3456 1740754545520
+http_client_request_duration_seconds_bucket{error_type="name_resolution_error",http_request_method="POST",server_address="otel-collector",server_port="4318",url_scheme="http",le="7.5"} 3456 1740754545520
+http_client_request_duration_seconds_bucket{error_type="name_resolution_error",http_request_method="POST",server_address="otel-collector",server_port="4318",url_scheme="http",le="10"} 3457 1740754545520
+http_client_request_duration_seconds_bucket{error_type="name_resolution_error",http_request_method="POST",server_address="otel-collector",server_port="4318",url_scheme="http",le="+Inf"} 3457 1740754545520
+http_client_request_duration_seconds_sum{error_type="name_resolution_error",http_request_method="POST",server_address="otel-collector",server_port="4318",url_scheme="http"} 145.17300699999987 1740754545520
+http_client_request_duration_seconds_count{error_type="name_resolution_error",http_request_method="POST",server_address="otel-collector",server_port="4318",url_scheme="http"} 3457 1740754545520
+
+# TYPE http_client_request_time_in_queue_seconds histogram
+# UNIT http_client_request_time_in_queue_seconds seconds
+# HELP http_client_request_time_in_queue_seconds The amount of time requests spent on a queue waiting for an available connection.
+http_client_request_time_in_queue_seconds_bucket{http_request_method="POST",network_protocol_version="1.1",server_address="otel-collector",server_port="4318",url_scheme="http",le="0"} 0 1740754545520
+http_client_request_time_in_queue_seconds_bucket{http_request_method="POST",network_protocol_version="1.1",server_address="otel-collector",server_port="4318",url_scheme="http",le="0.005"} 0 1740754545520
+http_client_request_time_in_queue_seconds_bucket{http_request_method="POST",network_protocol_version="1.1",server_address="otel-collector",server_port="4318",url_scheme="http",le="0.01"} 118 1740754545520
+http_client_request_time_in_queue_seconds_bucket{http_request_method="POST",network_protocol_version="1.1",server_address="otel-collector",server_port="4318",url_scheme="http",le="0.025"} 1401 1740754545520
+http_client_request_time_in_queue_seconds_bucket{http_request_method="POST",network_protocol_version="1.1",server_address="otel-collector",server_port="4318",url_scheme="http",le="0.05"} 3075 1740754545520
+http_client_request_time_in_queue_seconds_bucket{http_request_method="POST",network_protocol_version="1.1",server_address="otel-collector",server_port="4318",url_scheme="http",le="0.075"} 3376 1740754545520
+http_client_request_time_in_queue_seconds_bucket{http_request_method="POST",network_protocol_version="1.1",server_address="otel-collector",server_port="4318",url_scheme="http",le="0.1"} 3408 1740754545520
+http_client_request_time_in_queue_seconds_bucket{http_request_method="POST",network_protocol_version="1.1",server_address="otel-collector",server_port="4318",url_scheme="http",le="0.25"} 3438 1740754545520
+http_client_request_time_in_queue_seconds_bucket{http_request_method="POST",network_protocol_version="1.1",server_address="otel-collector",server_port="4318",url_scheme="http",le="0.5"} 3444 1740754545520
+http_client_request_time_in_queue_seconds_bucket{http_request_method="POST",network_protocol_version="1.1",server_address="otel-collector",server_port="4318",url_scheme="http",le="0.75"} 3446 1740754545520
+http_client_request_time_in_queue_seconds_bucket{http_request_method="POST",network_protocol_version="1.1",server_address="otel-collector",server_port="4318",url_scheme="http",le="1"} 3448 1740754545520
+http_client_request_time_in_queue_seconds_bucket{http_request_method="POST",network_protocol_version="1.1",server_address="otel-collector",server_port="4318",url_scheme="http",le="2.5"} 3453 1740754545520
+http_client_request_time_in_queue_seconds_bucket{http_request_method="POST",network_protocol_version="1.1",server_address="otel-collector",server_port="4318",url_scheme="http",le="5"} 3456 1740754545520
+http_client_request_time_in_queue_seconds_bucket{http_request_method="POST",network_protocol_version="1.1",server_address="otel-collector",server_port="4318",url_scheme="http",le="7.5"} 3456 1740754545520
+http_client_request_time_in_queue_seconds_bucket{http_request_method="POST",network_protocol_version="1.1",server_address="otel-collector",server_port="4318",url_scheme="http",le="10"} 3457 1740754545520
+http_client_request_time_in_queue_seconds_bucket{http_request_method="POST",network_protocol_version="1.1",server_address="otel-collector",server_port="4318",url_scheme="http",le="+Inf"} 3457 1740754545520
+http_client_request_time_in_queue_seconds_sum{http_request_method="POST",network_protocol_version="1.1",server_address="otel-collector",server_port="4318",url_scheme="http"} 139.0967165000003 1740754545520
+http_client_request_time_in_queue_seconds_count{http_request_method="POST",network_protocol_version="1.1",server_address="otel-collector",server_port="4318",url_scheme="http"} 3457 1740754545520
