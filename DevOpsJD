@@ -1,0 +1,42 @@
+1. Senior DevOps Engineer
+
+Experience Required: 5+ years
+
+Key Responsibilities:
+	•	Develop and maintain CI/CD pipelines using GitHub Actions, Jenkins, or similar tools.
+	•	Automate infrastructure provisioning and configuration management using Terraform, Ansible, and Helm.
+	•	Implement and optimize Kubernetes workloads, ensuring high availability and scalability.
+	•	Develop automation scripts in Python, Java, or JavaScript for infrastructure and operational tasks.
+	•	Lead observability initiatives using Prometheus, Grafana, Loki, and OpenTelemetry.
+	•	Manage cloud-based environments (AWS, Azure, or GCP), optimizing cost and performance.
+	•	Implement GitOps practices with ArgoCD or FluxCD for automated deployments.
+	•	Ensure security best practices in DevOps workflows, including vulnerability scanning and compliance automation.
+	•	Mentor junior DevOps engineers and contribute to DevOps best practices.
+
+Preferred Certifications:
+	•	Certified Kubernetes Administrator (CKA)
+	•	AWS Certified DevOps Engineer – Professional or Azure DevOps Engineer Expert
+	•	HashiCorp Certified: Terraform Associate
+	•	Certified Observability Practitioner (if applicable)
+
+⸻
+
+2. DevOps Engineers (Mid-Level)
+
+Experience Required: 3+ years
+
+Key Responsibilities:
+	•	Manage and deploy containerized applications using Kubernetes.
+	•	Implement GitOps workflows using ArgoCD or FluxCD.
+	•	Develop and maintain Helm charts for application deployment.
+	•	Set up and maintain observability solutions (Prometheus, Grafana, Loki, OpenTelemetry).
+	•	Automate infrastructure provisioning using Terraform and Ansible.
+	•	Manage CI/CD pipelines for continuous integration and deployment.
+	•	Monitor system performance, troubleshoot issues, and optimize resource utilization.
+	•	Work with developers to ensure a seamless development-to-production pipeline.
+
+Preferred Certifications:
+	•	Certified Kubernetes Administrator (CKA)
+	•	AWS Certified Solutions Architect – Associate or Google Cloud Professional DevOps Engineer
+	•	Certified ArgoCD Associate (if available)
+	•	Linux Foundation Certified System Administrator (LFCS)
